@@ -2,7 +2,6 @@ import { Dropdown, MenuProps } from 'antd';
 import dayjs from 'dayjs';
 import { BarsOutlined } from '@ant-design/icons';
 import { ColumnsType } from 'antd/es/table';
-
 interface Project {
     key: string;
     title: string;
@@ -13,11 +12,44 @@ interface Project {
 }
 
 const headerStyle = { backgroundColor: '#303030', color: 'white' };
-
 export const Columns = (
+    profiles: any,
+    profile: number,
     handleClickView: (record: Project) => void,
-    handleClickDelete: (record: Project) => void
+    handleClickDelete: (record: Project) => void,
+    handleClickEdit: (record: Project) => void
 ): ColumnsType<Project> => {
+    const configureItems = (record: Project) => {
+        console.log('boba: ', profiles)
+        let data: MenuProps['items'] =
+            [{
+                key: '1',
+                label: 'View',
+                onClick: () => handleClickView(record),
+            }];
+
+        if ([1, 2].includes(profile)) {
+            data.push(
+                {
+                    key: '2',
+                    label: 'Edit',
+                    onClick: () => handleClickEdit(record),
+                }
+            )
+        }
+        if (profile === 1) {
+            data.push(
+                {
+                    key: '3',
+                    label: 'Delete',
+                    danger: true,
+                    onClick: () => handleClickDelete(record),
+                }
+            )
+        }
+        return data;
+    }
+
     return [
         {
             title: 'Title',
@@ -63,20 +95,8 @@ export const Columns = (
             align: 'center',
             onHeaderCell: () => ({ style: headerStyle }),
             render: (_, record) => {
-                const items: MenuProps['items'] = [
-                    {
-                        key: '1',
-                        label: 'View',
-                        onClick: () => handleClickView(record),
-                    },
-                    {
-                        key: '2',
-                        label: 'Delete',
-                        danger: true,
-                        onClick: () => handleClickDelete(record),
-                    },
-                ];
-
+                const items = configureItems(record);
+                console.log(items)
                 return (
                     <Dropdown
                         placement="top"
