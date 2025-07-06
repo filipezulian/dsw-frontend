@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext'
 import MyRoutes from './MyRoutes'
 import { ToastContainer } from 'react-toastify'
 import { ConfigProvider, theme } from 'antd'
+import GlobalData from './GlobalData'
 
 function App() {
   return (
@@ -13,12 +14,14 @@ function App() {
           algorithm: theme.darkAlgorithm,
         }}
       >
-        <BrowserRouter>
-          <AuthProvider>
-            <MyRoutes />
-            <ToastContainer />
-          </AuthProvider>
-        </BrowserRouter>
+        <GlobalData>
+          <BrowserRouter>
+            <AuthProvider>
+              <MyRoutes />
+              <ToastContainer />
+            </AuthProvider>
+          </BrowserRouter>
+        </GlobalData>
       </ConfigProvider>
     </div>
   )
