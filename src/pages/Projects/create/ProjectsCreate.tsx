@@ -51,12 +51,9 @@ const ProjectsCreate: React.FC = (project) => {
         const data = await form.validateFields();
         const formatted = {
             ...data,
-            start_dt: dayjs(data.startDt).format('YYYY-MM-DD'),
-            end_dt: dayjs(data.endDt).format('YYYY-MM-DD'),
             status: status.find(s => s.id === data.status)
         }
         try {
-            console.log(formatted)
             await axios.post(`${import.meta.env.VITE_API_URL}/projects/create`, formatted, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -131,6 +128,7 @@ const ProjectsCreate: React.FC = (project) => {
                                     padding: "10px",
                                     width: "100%",
                                 }}
+                                format={"DD/MM/YYYY"}
                                 onChange={(value: Dayjs) => { setStartDt(value) }}
                                 placeholder="Enter a start date"
                             />
@@ -151,6 +149,7 @@ const ProjectsCreate: React.FC = (project) => {
                                     padding: "10px",
                                     width: "100%"
                                 }}
+                                format={"DD/MM/YYYY"}
                                 placeholder="Enter an end date"
                                 disabled={!startDt}
                                 minDate={startDt}

@@ -9,6 +9,7 @@ import GlobalData from "./GlobalData";
 import ProjectsEdit from "./pages/Projects/edit/projectsEdit";
 import ProjectsCreate from "./pages/Projects/create/ProjectsCreate";
 import ViewProject from "./pages/Projects/view/single";
+import CreateUser from "./pages/User/CreateUser";
 
 interface AuthenticatedRoutesProps {
     children: ReactNode;
@@ -63,6 +64,11 @@ const MyRoutes: React.FC = () => {
                     <ViewProject />
                 </AuthenticatedRoutes>
             } path="/projects/view/:id" />
+            <Route element={
+                <AuthenticatedRoutes>
+                    <CreateUser />
+                </AuthenticatedRoutes>
+            } path="/users/create" />
 
             {/* Catch-all route */}
             <Route path="*" element={<Error404 />} />

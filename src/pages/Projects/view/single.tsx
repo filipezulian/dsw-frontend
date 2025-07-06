@@ -44,7 +44,6 @@ const ViewProject: React.FC = () => {
     }, [id]);
 
     useEffect(() => {
-        console.log(formattedStatus, project)
         if (project && formattedStatus.length > 0) {
             renderTagColor();
         }

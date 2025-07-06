@@ -150,7 +150,7 @@ const ProjectsEdit: React.FC = () => {
                                         padding: "10px",
                                         width: "100%",
                                     }}
-                                    format="DD-MM-YYYY"
+                                    format="DD/MM/YYYY"
                                     onChange={(value: Dayjs) => { setStartDt(value) }}
                                     placeholder="Enter a start date"
                                 />
@@ -171,7 +171,7 @@ const ProjectsEdit: React.FC = () => {
                                         padding: "10px",
                                         width: "100%"
                                     }}
-                                    format="DD-MM-YYYY"
+                                    format="DD/MM/YYYY"
                                     placeholder="Enter an end date"
                                     minDate={startDt}
                                 />

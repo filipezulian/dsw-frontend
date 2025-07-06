@@ -106,7 +106,8 @@ const Projects: React.FC = () => {
                     <Table rowKey="projectId" dataSource={projects} columns={Columns(profiles, profile, statuses, handleClickView, handleClickDelete, handleClickEdit)}></Table>
                     {profile === 1 && (
                         <Flex gap={10} justify="center" align="center">
-                        <Button onClick={() => { navigate('/projects/create') }}>Create new project</Button>
+                            <Button onClick={() => { navigate('/projects/create') }}>Create new project</Button>
+                            <Button onClick={() => { navigate('/users/create') }}>Create new User</Button>
                         </Flex>
                     )}
                 </Space>
